@@ -1,0 +1,45 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 
+Font-Family: 'Roboto Condensed', Sans-Serif;
+Font-Size: 35px;
+
+Font-Family: 'Cabin', Sans-Serif;
+Font-Size: 16px;
+*/
+
+@layer base {
+  body {
+    font-family: 'Popping';
+    // font-size: 16px;
+    // @apply text-gray-900 dark:text-white;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: 'Roboto';
+    // @apply text-gray-900 dark:text-white;
+    // font-size: 35px;
+  }
+}
+
+@layer components {
+  body {
+    @apply text-gray-900 dark:text-white;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply text-gray-900 dark:text-white;
+  }
+}
