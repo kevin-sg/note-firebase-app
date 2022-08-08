@@ -1,0 +1,10 @@
+
+dist
+src/models
+src/adapters
+
+*/tailwind.config
+
+package-lock.json
+
+yarn.lock
