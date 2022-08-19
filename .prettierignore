@@ -1,7 +1,7 @@
 
 dist
 src/models
-src/adapters
+src/adapters--
 
 */tailwind.config
 
