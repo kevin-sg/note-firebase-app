@@ -1,4 +1,4 @@
-import { createContext, useMemo, useState, ReactNode, Dispatch, SetStateAction, useEffect } from 'react';
+import { createContext, useMemo, useState, ReactNode, Dispatch, SetStateAction } from 'react';
 
 import { initialTheme } from '@/utilities';
 
