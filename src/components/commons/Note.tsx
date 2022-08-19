@@ -1,9 +1,7 @@
 import type { FC } from 'react';
 import Button from './Button';
 
-interface Props {}
-
-const Note: FC = (props: Props) => {
+const Note: FC = () => {
   return (
     <div>
       <form noValidate>

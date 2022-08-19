@@ -1,13 +1,14 @@
 import type { UseFormRegisterReturn } from 'react-hook-form';
 import type { FC } from 'react';
+import clsx from 'clsx';
 
 interface InputBaseProps {
   id?: string;
   type: 'text' | 'email' | 'password';
   label?: string;
-  errorMessage: string;
+  errorMessage?: string;
   placeholder?: string;
-  register?: UseFormRegisterReturn<any>;
+  register?: UseFormRegisterReturn;
 }
 
 const InputBase: FC<InputBaseProps> = (props) => {
@@ -22,11 +23,19 @@ const InputBase: FC<InputBaseProps> = (props) => {
         id={id}
         type={type}
         placeholder={placeholder}
-        className='bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg placeholder-gray-400 focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'
+        className={clsx(
+          errorMessage?.length
+            ? 'border-red-500 focus:border-red-600 focus:ring-red-500'
+            : 'focus:ring-blue-500 focus:border-blue-600 dark:focus:border-blue-700 dark:border-gray-600 ',
+          'bg-gray-50 border border-gray-300 text-gray-900 dark:text-gray-50 sm:text-sm rounded-lg outline-none placeholder-gray-400 focus:ring-1 block w-full p-2.5 dark:bg-gray-700',
+        )}
         {...register}
       />
+
       {!!errorMessage && (
-        <span className='mt-1 ml-1 text-red-600 dark:text-red-500 text-sm font-semibold'>{errorMessage}</span>
+        <span className='mt-1.5 ml-1 text-red-600 dark:text-red-500 text-sm font-semibold'>
+          {errorMessage}
+        </span>
       )}
     </div>
   );

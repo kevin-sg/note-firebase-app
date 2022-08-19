@@ -1,5 +1,5 @@
 import type { UseFormRegisterReturn } from 'react-hook-form';
-import type { FC } from 'react';
+import type { TComponentProps } from '@/index';
 
 interface ICheckboxProps {
   id?: string;
@@ -7,11 +7,11 @@ interface ICheckboxProps {
   textLink?: string;
   link?: string;
   errorMessage?: string | undefined;
-  register: UseFormRegisterReturn<any>;
+  register: UseFormRegisterReturn;
 }
 
-const Checkbox: FC<ICheckboxProps> = (props) => {
-  const { id, description, textLink, errorMessage, link, register } = props;
+const Checkbox: TComponentProps<ICheckboxProps> = (props) => {
+  const { id, description, textLink, errorMessage, register } = props;
 
   return (
     <div>
@@ -29,7 +29,10 @@ const Checkbox: FC<ICheckboxProps> = (props) => {
           <label htmlFor={id} className='text-gray-500 dark:text-gray-300'>
             {description}{' '}
             {textLink && (
-              <button type='button' className='font-medium text-blue-600 hover:underline dark:text-blue-500'>
+              <button
+                type='button'
+                className='font-medium text-blue-600 hover:underline dark:text-blue-500'
+              >
                 {textLink}
               </button>
             )}
@@ -37,7 +40,9 @@ const Checkbox: FC<ICheckboxProps> = (props) => {
         </div>
       </div>
       {!!errorMessage && (
-        <span className='mt-1 ml-1 text-red-600 dark:text-red-500 text-sm font-semibold'>{errorMessage}</span>
+        <span className='mt-1 ml-1 text-red-600 dark:text-red-500 text-sm font-semibold'>
+          {errorMessage}
+        </span>
       )}
     </div>
   );
