@@ -1,6 +1,5 @@
 // Change the icons inside the button based on previous settings
 export const initialTheme = (): string => {
-  console.log('initialTheme:');
   if (
     localStorage.getItem('color-theme') === 'dark' ||
     (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)
