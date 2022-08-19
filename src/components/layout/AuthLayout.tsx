@@ -1,13 +1,8 @@
-import type { ReactNode, FC } from 'react';
+import type { TComponentProps } from '@/index';
 
 import { FaReact } from 'react-icons/fa';
 
-interface IAuthLayoutProps {
-  title: string;
-  children: ReactNode;
-}
-
-const AuthLayout: FC<IAuthLayoutProps> = ({ title, children }) => {
+const AuthLayout: TComponentProps<{ title: string }> = ({ title = '', children }) => {
   return (
     <section className='bg-gray-50 dark:bg-gray-900'>
       <div className='flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0'>
