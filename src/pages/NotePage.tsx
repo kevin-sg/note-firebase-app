@@ -1,11 +1,28 @@
 import { BsBookmark } from 'react-icons/bs';
 import { BiExit } from 'react-icons/bi';
-import { Link } from 'react-router-dom';
-import type { FC } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { FC, useCallback } from 'react';
 
-import { ThemeButton, NothingSelected, Note } from '@/components';
+import { ThemeButton, NothingSelected } from '@/components';
+import { useAppDispatch, AuthLogoutAction } from '@/redux';
+import { authSignOut } from '@/firebase';
 
 const NotePage: FC = () => {
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
+
+  const handleLogout = useCallback(async () => {
+    try {
+      await authSignOut();
+      dispatch(AuthLogoutAction());
+      navigate('/login', { replace: true });
+      console.log('handleLogout: Sign-out successful.');
+    } catch (err) {
+      // An error happened.
+      console.error(err);
+    }
+  }, []);
+
   return (
     <div className='h-screen flex'>
       <header className='fixed top-0 right-0 z-40 w-[calc(100%-18rem)] px-2 sm:px-4 py-2.5'>
@@ -15,7 +32,7 @@ const NotePage: FC = () => {
           </Link>
           <div className='inline-flex gap-4 items-center'>
             <ThemeButton />
-            <button type='button'>
+            <button type='button' onClick={handleLogout}>
               {' '}
               <BiExit className='text-2xl text-gray-900 hover:text-red-500 dark:text-gray-200 dark:hover:text-red-400' />
             </button>
@@ -60,7 +77,9 @@ const NotePage: FC = () => {
         </div>
 
         <footer className='py-4'>
-          <h3 className='text-center text-sm dark:text-gray-500'>Copyright 2022</h3>
+          <div>
+            <h3 className='text-center text-sm dark:text-gray-500'>Copyright 2022</h3>
+          </div>
         </footer>
       </main>
     </div>
